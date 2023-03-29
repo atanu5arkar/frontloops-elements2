@@ -48,3 +48,8 @@ body {
 .nve, .neu {color: darkgray;}
 
 .tab-content {margin: 0;}
+
+
+/* utility classes */
+
+.def-color {color: #000;}

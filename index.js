@@ -1,55 +1,52 @@
 
-const tabContent = document.querySelector(".tab-content");
+const tabContent = $(".tab-content");
 const pveBtn = document.querySelector(".pve").style;
 const nveBtn = document.querySelector(".nve").style;
 const neuBtn = document.querySelector(".neu").style;
 
-for(i = 0; i <= 2; i += 1) {
-    document.querySelectorAll(".tab")[i].addEventListener("click", function() {
+$(".tab").click(function() {
+    
+    $(this).css("color", "inherit");  //need some tweak
+    
+    if($(this).hasClass("nve")) {
+        tabContent.html("Negative content");
+        pveBtn.color = "darkgray";
+        neuBtn.color = "darkgray";                   
+    }
+    else if($(this).hasClass("pve")) {
+        tabContent.html("Positive content");
+        nveBtn.color = "darkgray";
+        neuBtn.color = "darkgray"; 
         
-        this.style.color = "inherit";
-        var classNames = this.classList;
-       
-        if(classNames[1] === "nve") {
-            tabContent.innerHTML = "Negative content";
-            pveBtn.color = "darkgray";
-            neuBtn.color = "darkgray";                   
-        }
-        else if(classNames[1] === "pve") {
-            tabContent.innerHTML = "Positive content";
-            nveBtn.color = "darkgray";
-            neuBtn.color = "darkgray"; 
-            
-        } else {
-            tabContent.innerHTML = "Neutral content";
-            pveBtn.color = "darkgray";
-            nveBtn.color = "darkgray"; 
-        }
-    });
-}
+    } else {
+        tabContent.html("Neutral content");
+        pveBtn.color = "darkgray";
+        nveBtn.color = "darkgray"; 
+    }
+});
 
 
-document.querySelector(".change-btn").addEventListener("click", function() {
+$(".change-btn").click(function() {
 
-    var tabIndexInput = document.querySelector(".tab-index-input");  
+    var indexInput = $(".tab-index-input").val();  
 
-    switch (tabIndexInput.value) {
+    switch (indexInput) {
         case "1": 
-            tabContent.innerHTML = "Positive content";
+            tabContent.html("Positive content");
             pveBtn.color = "inherit";
             nveBtn.color = "darkgray";
             neuBtn.color = "darkgray";         
             break;
         
         case "2": 
-            tabContent.innerHTML = "Negative content";
+            tabContent.html("Negative content");
             nveBtn.color = "inherit";
             pveBtn.color = "darkgray";
             neuBtn.color = "darkgray"; 
             break;
 
         case "3": 
-            tabContent.innerHTML = "Neutral content";
+            tabContent.html("Neutral content");
             neuBtn.color = "inherit";
             pveBtn.color = "darkgray";
             nveBtn.color = "darkgray"; 
@@ -59,5 +56,5 @@ document.querySelector(".change-btn").addEventListener("click", function() {
             break;
     }
 
-    tabIndexInput.value = "";
+    $(".tab-index-input").val("");
 })
